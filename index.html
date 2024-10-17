@@ -1,0 +1,82 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Backpack Configurator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="container"></div>
+
+    <!-- Конфігуратор -->
+    <div class="configurator">
+        <div class="customizer-container">
+            <!-- Body Color Block -->
+            <div class="customizer-section">
+                <h3>BODY COLOR</h3>
+                <div class="color-options">
+                    <div class="color-item">
+                        <div class="color-circle" data-color="brown" style="background-color: #8B4513;"></div>
+                        <span class="color-label">Brown</span>
+                    </div>
+                    <div class="color-item">
+                        <div class="color-circle" data-color="black" style="background-color: #000000;"></div>
+                        <span class="color-label">Black</span>
+                    </div>
+                    <div class="color-item">
+                        <div class="color-circle" data-color="navy" style="background-color: #000080;"></div>
+                        <span class="color-label">Blue</span>
+                    </div>
+                </div>
+            </div>
+        
+            <!-- Metal Color Block -->
+            <div class="customizer-section">
+                <h3>METAL COLOR</h3>
+                <div class="color-options">
+                    <div class="color-item">
+                        <div class="color-circle" data-hardware="silver" style="background-color: silver;"></div>
+                        <span class="color-label">Silver</span>
+                    </div>
+                    <div class="color-item">
+                        <div class="color-circle" data-hardware="gold" style="background-color: gold;"></div>
+                        <span class="color-label">Gold</span>
+                    </div>
+                    <div class="color-item">
+                        <div class="color-circle" data-hardware="black" style="background-color: #000000;"></div>
+                        <span class="color-label">Black</span>
+                    </div>
+                </div>
+            </div>
+        
+            <!-- Material Block -->
+            <div class="customizer-section">
+                <h3>MATERIAL</h3>
+                <div class="buttons-container">
+                    <button class="material-btn" data-material="leather">Leather</button>
+                    <button class="material-btn" data-material="fabric">Fabric</button>
+                    <button class="material-btn" data-material="denim">Denim</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Кнопка для AR -->
+    <button id="ar-button">
+        <span class="ar-icon"></span>
+        See In Real Life
+    </button>
+
+    <!-- Попап з QR-кодом для десктопної версії -->
+    <div id="qr-popup" class="hidden">
+        <h4>Scan QR Code to view in AR</h4>
+        <img id="qr-code" src="assets/qrcode.png" alt="QR Code">
+        <button id="close-popup">Close</button>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
