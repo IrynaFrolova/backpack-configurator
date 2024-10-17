@@ -266,7 +266,6 @@ button:hover, button.active {
     border-color: blue;
 }
 
-/* Style for the labels */
 .color-label {
     font-size: 12px;
     margin-top: 5px;

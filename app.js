@@ -1,6 +1,5 @@
 let scene, camera, renderer, model;
 
-// Ініціалізація Three.js
 function init() {
     scene = new THREE.Scene();
     scene.background = new THREE.Color(0xffffff);
@@ -21,7 +20,7 @@ function init() {
         model = gltf.scene;
         model.traverse(function (child) {
             if (child.isMesh) {
-                console.log(child.name);  // Друкуємо назву кожного об'єкта
+                console.log(child.name); 
             }
         });
         scene.add(model);
@@ -31,23 +30,19 @@ function init() {
     animate();
 }
 
-// Анімація сцени
 function animate() {
     requestAnimationFrame(animate);
     if (model) model.rotation.y += 0.01;
     renderer.render(scene, camera);
 }
 
-// Обробка зміни розміру вікна
 function onWindowResize() {
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
     renderer.setSize(window.innerWidth, window.innerHeight);
 }
 
-// Функції для зміни матеріалів, кольорів і фурнітури
 
-// Додавання слухачів подій для вибору матеріалу
 document.querySelectorAll('.material-btn').forEach(button => {
     button.addEventListener('click', function() {
         const material = this.getAttribute('data-material');
@@ -55,7 +50,6 @@ document.querySelectorAll('.material-btn').forEach(button => {
     });
 });
 
-// Додавання слухачів подій для вибору кольору
 document.querySelectorAll('.color-circle').forEach(circle => {
     circle.addEventListener('click', function() {
         const color = this.getAttribute('data-color');
@@ -63,7 +57,6 @@ document.querySelectorAll('.color-circle').forEach(circle => {
     });
 });
 
-// Додавання слухачів подій для вибору фурнітури
 document.querySelectorAll('.hardware-btn').forEach(button => {
     button.addEventListener('click', function() {
         const hardware = this.getAttribute('data-hardware');
@@ -71,7 +64,6 @@ document.querySelectorAll('.hardware-btn').forEach(button => {
     });
 });
 
-// Функція для зміни матеріалу рюкзака
 function updateBackpackMaterial(materialType) {
     let baseColor, normalMap, ormMap;
 
@@ -100,7 +92,6 @@ function updateBackpackMaterial(materialType) {
     });
 }
 
-// Функція для зміни кольору рюкзака
 function updateBackpackColor(color) {
     let newColor;
 
@@ -120,20 +111,19 @@ function updateBackpackColor(color) {
     });
 }
 
-// Функція для зміни фурнітури рюкзака
 function updateBackpackHardware(hardwareType) {
     model.traverse(function (child) {
-        if (child.isMesh && child.name === 'hardware') {  // Переконайтесь, що об'єкт зветься "hardware"
+        if (child.isMesh && child.name === 'hardware') {  
             let baseColor, normalMap = null, ormMap = null;
 
             if (hardwareType === 'silver') {
-                baseColor = new THREE.TextureLoader().load('models/metall_baseColor.jpg');  // Срібляста фурнітура
+                baseColor = new THREE.TextureLoader().load('models/metall_baseColor.jpg');  
                 normalMap = new THREE.TextureLoader().load('models/metall_normal.jpg');
                 ormMap = new THREE.TextureLoader().load('models/metall_occlusionRoughnessMetallic.jpg');
             } else if (hardwareType === 'black') {
-                baseColor = new THREE.Color(0x000000);  // Чорна фурнітура
+                baseColor = new THREE.Color(0x000000);  
             } else if (hardwareType === 'gold') {
-                baseColor = new THREE.Color(0xFFD700);  // Золота фурнітура
+                baseColor = new THREE.Color(0xFFD700); 
             }
 
             child.material.map = baseColor;
@@ -145,7 +135,6 @@ function updateBackpackHardware(hardwareType) {
     });
 }
 
-// AR логіка
 document.getElementById('ar-button').addEventListener('click', function() {
     if (isMobileDevice()) {
         startAR();
@@ -154,18 +143,14 @@ document.getElementById('ar-button').addEventListener('click', function() {
     }
 });
 
-// Перевірка, чи пристрій мобільний
 function isMobileDevice() {
     return /Mobi|Android/i.test(navigator.userAgent);
 }
 
-// Логіка для запуску AR
 function startAR() {
-    // Логіка для запуску WebAR (вставьте свій URL-страниці для AR)
     window.location.href = 'your-AR-page-url-here';
 }
 
-// Показ QR-коду, якщо пристрій не мобільний
 function showQRCode() {
     document.getElementById('qr-popup').classList.remove('hidden');
 }
@@ -174,5 +159,4 @@ document.getElementById('close-popup').addEventListener('click', function() {
     document.getElementById('qr-popup').classList.add('hidden');
 });
 
-// Ініціалізація сцени
 init();
